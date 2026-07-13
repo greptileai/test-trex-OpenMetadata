@@ -340,10 +340,10 @@ export const convertMillisecondsToHumanReadableFormat = (
   showMilliseconds = false,
   prependForNegativeValue = '-'
 ): string => {
-  // Handle zero and very small positive values
+  // Treat zero and sub-second durations as "0s" when milliseconds are hidden
   if (
     timestamp === 0 ||
-    (!showMilliseconds && timestamp > 0 && timestamp < 1000)
+    (!showMilliseconds && timestamp > 0 && timestamp <= 1000)
   ) {
     return '0s';
   }
